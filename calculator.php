@@ -1,6 +1,6 @@
 <?php
     $value = "";
-    // $op = "";
+    $op = "";
     $result = "";
     $cookieName1 = "value";
     $cookieValue1 = "";
@@ -23,31 +23,33 @@
         $value = "";
     }
 
-    // if (isset($_POST['equals_to'])) {
-    //     $value = $_POST['submit'];
+    switch($_COOKIE['op']){
+        case "+":
+            $result = $_COOKIE['submit'] + $value;
+            break;
+        case "/":
+            $result = $_COOKIE['submit'] / $value;
+            break;
+        case "-":
+            $result = $_COOKIE['submit'] - $value;
+            break;
+        case "x":
+            $result = $_COOKIE['submit'] * $value;
+            break;
+    }
 
-    //     echo $_COOKIE['op'];
-    //     echo $_COOKIE['submit'];
+    if (isset($_POST['equals_to'])) {
+        $value = $_POST['submit'];
 
-    //     echo $value;
+        echo $_COOKIE['op'];
+        echo $_COOKIE['submit'];
 
-    //     $result = $value + $_COOKIE['submit'];
-    // }
+        echo $value;
 
-    // switch($_COOKIE['op']){
-    //     case "+":
-    //         $result = $_COOKIE['submit'] + $value;
-    //         break;
-    //     case "/":
-    //         $result = $_COOKIE['submit'] / $value;
-    //         break;
-    //     case "-":
-    //         $result = $_COOKIE['submit'] - $value;
-    //         break;
-    //     case "x":
-    //         $result = $_COOKIE['submit'] * $value;
-    //         break;
-    // }
+        $result = $value + $_COOKIE['submit'];
+    }
+
+    $value = $result;
 ?>
 
 <h3>C A L C U L A T O R</h3>
